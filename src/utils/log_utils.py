@@ -13,23 +13,25 @@ def get_log_filehandler(fn):
     return lh
 
 
-def get_log_console_handler():
+def get_log_console_handler(level=logging.INFO):
     lh = logging.StreamHandler()
-    lh.setLevel(logging.INFO)
+
+    lh.setLevel(level)
     formatter = logging.Formatter('%(asctime)s - %(filename)s - %(levelname)s - %(processName)s - %(message)s')
     lh.setFormatter(formatter)
 
     return lh
 
 
-def get_logger(loggfilename):
+def get_logger(loggfilename, level=logging.INFO):
 
     my_logger = logging.getLogger()
-    my_logger.setLevel(logging.INFO)
+    # level = logging.INFO
+    my_logger.setLevel(level)
     # my_logger.addHandler(
     #     get_log_filehandler(os.path.join(LOG_DIR, '{}.log'.format(dt.datetime.today().strftime('%Y-%m-%d')))))
     my_logger.addHandler(get_log_filehandler(loggfilename))
-    my_logger.addHandler(get_log_console_handler())
+    my_logger.addHandler(get_log_console_handler(level=level))
 
     return my_logger
 

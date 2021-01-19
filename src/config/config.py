@@ -45,4 +45,5 @@ class Config(object):
         if not os.path.isfile(self.config_file):
             copyfile(output_file, self.config_file)
 
+
 config = Config()

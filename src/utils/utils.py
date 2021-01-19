@@ -222,3 +222,5 @@ def is_certain_index_future(future_code, future_first2):
         return True
     else:
         return False
+
+
