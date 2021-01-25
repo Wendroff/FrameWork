@@ -19,6 +19,7 @@ class Config(object):
         self.log_file = os.path.join(log_dir, '{}.log'.format(dt.datetime.today().strftime('%Y%m%d%H%M%S.f')))
         self.output_dir = new_path(os.path.join(self.main_dir, 'output'))
         self.config_dir = new_path(os.path.join(self.main_dir, 'config'))
+        self.cache_dir = new_path(os.path.join(self.main_dir, 'cache'))
         self.config_file = os.path.join(self.config_dir, 'config.ini')
         self.config = configparser.ConfigParser()
 
