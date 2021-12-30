@@ -1,6 +1,7 @@
 import configparser
 import os
 import datetime as dt
+import sys
 from shutil import copyfile
 
 from src.utils.utils import new_path
@@ -16,7 +17,9 @@ class Config(object):
         # self.config_dir = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), '..\\config')
 
         log_dir = new_path(os.path.join(self.main_dir, 'log'))
-        self.log_file = os.path.join(log_dir, '{}.log'.format(dt.datetime.today().strftime('%Y%m%d%H%M%S.f')))
+        # self.log_file = os.path.join(log_dir, '{}.log'.format(dt.datetime.today().strftime('%Y%m%d%H%M%S.f')))
+        self.log_file = os.path.join(log_dir,
+                                     '{}_{}.log'.format(dt.datetime.today().strftime('%Y%m%d'), '_'.join(sys.argv[1:])))
         self.output_dir = new_path(os.path.join(self.main_dir, 'output'))
         self.config_dir = new_path(os.path.join(self.main_dir, 'config'))
         self.cache_dir = new_path(os.path.join(self.main_dir, 'cache'))
