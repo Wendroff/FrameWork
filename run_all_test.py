@@ -15,6 +15,8 @@ if not os.path.isdir(test_log_dir):
 strftime = dt.datetime.today().strftime("%Y%m%d%H%M%S")
 logger = get_logger(os.path.join(test_log_dir, 'test_{}.log'.format(strftime)), level=logging.INFO)
 
+test_output = os.path.join(test_log_dir, 'test_output_{}.log'.format(strftime))
+
 if __name__ == '__main__':
     test_dir = './test'
     discover = unittest.defaultTestLoader.discover(test_dir, pattern="test*.py")
@@ -25,5 +27,8 @@ if __name__ == '__main__':
     # with open(os.path.join(os.path.pardir, 'test_log', 'test_{}.log'.format(dt.datetime.today().strftime("%Y%m%d%H%M%S"))), 'w') as f:
     #     runner = unittest.TextTestRunner(stream=f, verbosity=2)
     #     runner.run(discover)
-    runner = unittest.TextTestRunner(verbosity=2)
-    runner.run(discover)
+    # runner = unittest.TextTestRunner(verbosity=2)
+    # runner.run(discover)
+    with open(test_output, 'a') as f:
+        runner = unittest.TextTestRunner(stream=f, verbosity=2)
+        runner.run(discover)
