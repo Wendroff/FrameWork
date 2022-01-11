@@ -45,3 +45,14 @@ def retry(func, retry_n_times=10, sleeptime=2):
         else:
             raise Exception('You should not reach here. Check the code!!!')
     return wrapper
+
+
+# 单例模式装置器
+def singleton(cls, *args, **kw):
+    instances = {}
+
+    def getinstance():
+        if cls not in instances:
+            instances[cls] = cls(*args, **kw)
+        return instances[cls]
+    return getinstance
