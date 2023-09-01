@@ -18,7 +18,7 @@ def time_this(func):
     return wrapper
 
 
-def retry(func, retry_n_times=10, sleeptime=2):
+def retry(func, retry_n_times=5, sleeptime=30):
     """
 
     :param func:
